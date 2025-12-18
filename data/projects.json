@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Landing Page",
+    "description": "A clean, responsive landing page.",
+    "stack": "HTML, CSS, JavaScript",
+    "link": "#"
+  },
+  {
+    "title": "Portfolio API",
+    "description": "Simple Flask API serving projects.",
+    "stack": "Python, Flask",
+    "link": "#"
+  },
+  {
+    "title": "UI Components",
+    "description": "Reusable components styled like macOS.",
+    "stack": "HTML, CSS",
+    "link": "#"
+  }
+]
