@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AJIBADE — Portfolio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="apple"></span>
+      <span class="menu-label">Portfolio</span>
+      <button id="themeToggle" class="theme-toggle" title="Toggle Dark/Light">🌓</button>
+    </div>
+    <div class="topbar-right">
+      <span id="wifi" class="status">📶</span>
+      <span id="battery" class="status">🔋</span>
+      <button id="bell" class="status" title="Notifications">🔔</button>
+      <span id="date" class="dt"></span>
+      <span id="time" class="dt"></span>
+      <button id="spotlightBtn" class="status" title="Spotlight">🔎</button>
+    </div>
+  </header>
+
+  <!-- Wallpaper -->
+  <div class="wallpaper">
+    <img src="{{ url_for('static', filename='img/wallpaper.jpg') }}" alt="Wallpaper" />
+    <h1>SMART TECH PORTFOLIO MAC OS STYLE</h1>
+  </div>
+
+  <!-- Dock -->
+  <nav class="dock" id="dock">
+    <button class="dock-icon" data-open="about">👤<span class="label">About</span></button>
+    <button class="dock-icon" data-open="projects">💻<span class="label">Projects</span></button>
+    <button class="dock-icon" data-open="contact">✉️<span class="label">Contact</span></button>
+  </nav>
+
+  <!-- Windows -->
+  <section id="about" class="window" aria-hidden="true">
+    <div class="titlebar">
+      <div class="traffic">
+        <button class="close" data-close="about" aria-label="Close"></button>
+        <button class="minimize" aria-label="Minimize"></button>
+        <button class="maximize" aria-label="Maximize"></button>
+      </div>
+      <span class="title">About Me</span>
+    </div>
+    <div class="content">
+      <h2>Hi, I’m AJIBADE SMAUEL known as SMART tech by my fellas (collins(KV) and my best programmer buddy(EKMAH ANDREW(E_I_A)))</h2>
+      <p>I build clean, fast web experiences. This portfolio mimics the feel of macOS—dock, windows, spotlight—so you can explore my work in a familiar interface and was developed by AJIBADE smauel aka smarttech but the idea was not mine copied and developed from scratch muhahahah.</p>
+      <ul class="facts">
+        <li><strong>Location:</strong> Lagos, Nigeria alagbole to be precised and am living a good life but need money</li>
+        <li><strong>Focus:</strong> Frontend UI, Python backend</li>
+        <li><strong>Interests:</strong> animations, UX, performance</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects" class="window" aria-hidden="true">
+    <div class="titlebar">
+      <div class="traffic">
+        <button class="close" data-close="projects" aria-label="Close"></button>
+        <button class="minimize" aria-label="Minimize"></button>
+        <button class="maximize" aria-label="Maximize"></button>
+      </div>
+      <span class="title">Projects</span>
+    </div>
+    <div class="content">
+      <div id="projectsList" class="projects-grid">
+        <!-- Loaded via /api/projects -->
+        <div class="loading">Loading projects…</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="window" aria-hidden="true">
+    <div class="titlebar">
+      <div class="traffic">
+        <button class="close" data-close="contact" aria-label="Close"></button>
+        <button class="minimize" aria-label="Minimize"></button>
+        <button class="maximize" aria-label="Maximize"></button>
+      </div>
+      <span class="title">Contact</span>
+    </div>
+    <div class="content">
+      <form id="contactForm" class="contact-form">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button type="submit" class="send">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Notifications sheet -->
+  <aside id="notif" class="sheet right" aria-hidden="true"></aside>
+
+  <!-- Spotlight search -->
+  <aside id="spotlight" class="sheet center" aria-hidden="true">
+    <input id="search" class="search" placeholder="Search… (windows, projects)" />
+    <div id="results" class="results"></div>
+    <button class="close-spotlight" id="closeSpotlight">✕</button>
+  </aside>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
