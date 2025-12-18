@@ -1,0 +1,125 @@
+/* Base */
+* { box-sizing: border-box; }
+:root {
+  --bg1: #dfe9f3;
+  --bg2: #ffffff;
+  --text: #1f2937;
+  --glass: rgba(255,255,255,0.6);
+  --bar: rgba(255,255,255,0.35);
+  --bar-dark: rgba(15,23,42,0.55);
+  --shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+html[data-theme="dark"] {
+  --bg1: #0f172a;
+  --bg2: #1e293b;
+  --text: #e5e7eb;
+  --glass: rgba(30,41,59,0.7);
+  --bar: var(--bar-dark);
+}
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Wallpaper */
+.wallpaper { position: fixed; inset: 0; z-index: -1; }
+.wallpaper img {
+  width: 100%; height: 100%; object-fit: cover; filter: saturate(1.1) contrast(1.05) brightness(1.02);
+}
+
+/* Top bar */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 14px; backdrop-filter: blur(12px);
+  background: var(--bar); box-shadow: 0 1px 0 rgba(0,0,0,.08);
+}
+.topbar-left, .topbar-right { display: flex; align-items: center; gap: 12px; }
+.apple { font-weight: 600; }
+.menu-label { opacity: .9; }
+.theme-toggle, .status {
+  border: none; background: transparent; color: inherit; cursor: pointer; font-size: 14px;
+}
+
+/* Dock */
+.dock {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 22px; padding: 10px 18px; backdrop-filter: blur(14px);
+  background: var(--bar); border-radius: 22px; box-shadow: var(--shadow);
+}
+.dock-icon {
+  display: grid; place-items: center; gap: 4px;
+  width: 56px; height: 56px; border-radius: 14px; cursor: pointer;
+  transition: transform .12s ease;
+  will-change: transform;
+  color: inherit; background: transparent; border: none; font-size: 24px;
+}
+.dock-icon .label { font-size: 12px; opacity: .8; }
+
+/* Windows */
+.window {
+  position: absolute; top: 80px; left: 100px; width: 520px; max-height: 65vh;
+  display: none; flex-direction: column; border-radius: 12px; overflow: hidden;
+  background: var(--glass); backdrop-filter: blur(12px); box-shadow: var(--shadow);
+  will-change: transform, left, top;
+}
+.titlebar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 10px; background: color-mix(in oklab, var(--bg2) 80%, transparent);
+  cursor: move; user-select: none;
+}
+.traffic { display: flex; align-items: center; gap: 6px; }
+.close, .minimize, .maximize {
+  width: 12px; height: 12px; border-radius: 50%; border: none; cursor: pointer;
+}
+.close { background: #ff5f57; }
+.minimize { background: #ffbd2e; }
+.maximize { background: #28c940; }
+.title { font-weight: 600; opacity: .85; }
+.content { padding: 14px; overflow: auto; }
+
+/* Projects grid */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.project-card {
+  border-radius: 10px; padding: 12px; background: color-mix(in oklab, var(--bg2) 75%, transparent);
+  display: grid; gap: 6px;
+}
+.project-card a { color: inherit; text-decoration: none; font-weight: 600; }
+
+/* Notifications & Spotlight */
+.sheet {
+  position: fixed; background: var(--glass); backdrop-filter: blur(14px);
+  border-radius: 12px; box-shadow: var(--shadow); padding: 12px;
+}
+.sheet.right { top: 40px; right: 14px; width: 280px; display: none; }
+.sheet.center {
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: min(720px, 90vw); display: none;
+}
+.search {
+  width: 100%; padding: 12px; border: 1px solid color-mix(in oklab, var(--bg2) 25%, transparent);
+  border-radius: 10px; font-size: 16px; background: color-mix(in oklab, var(--bg2) 70%, transparent);
+}
+.results { margin-top: 12px; display: grid; gap: 8px; max-height: 40vh; overflow: auto; }
+.result-item {
+  padding: 10px; border-radius: 8px; cursor: pointer;
+  background: color-mix(in oklab, var(--bg2) 70%, transparent);
+}
+.result-item:hover { background: color-mix(in oklab, var(--bg2) 80%, transparent); }
+.close-spotlight {
+  position: absolute; top: 8px; right: 8px; border: none; background: transparent; font-size: 20px; cursor: pointer;
+}
+
+/* Utility */
+.loading { opacity: .7; }
+.facts { display: grid; gap: 6px; padding: 0; margin: 10px 0; list-style: none; }
+.contact-form { display: grid; gap: 10px; }
+.contact-form label { display: grid; gap: 6px; }
+.contact-form input, .contact-form textarea {
+  padding: 10px; border-radius: 10px; border: 1px solid color-mix(in oklab, var(--bg2) 25%, transparent);
+  background: color-mix(in oklab, var(--bg2) 75%, transparent); color: inherit;
+}
+.send { border: none; padding: 10px 14px; border-radius: 10px; cursor: pointer; background: #3b82f6; color: white; }
